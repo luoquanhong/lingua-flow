@@ -1,0 +1,64 @@
+name: lingua_flow
+description: AI English Vocabulary Learning App — Learn words through contextual AI-generated scenarios.
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  flutter_riverpod: ^2.4.9
+  riverpod_annotation: ^2.3.3
+
+  # Routing
+  go_router: ^13.2.0
+
+  # Networking
+  dio: ^5.4.1
+
+  # Local Storage
+  shared_preferences: ^2.2.2
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  # UI Components
+  fl_chart: ^0.66.2
+  shimmer: ^3.0.0
+  cached_network_image: ^3.3.1
+
+  # Utils
+  intl: ^0.19.0
+  equatable: ^2.0.5
+  json_annotation: ^4.8.1
+
+  # Icons
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  build_runner: ^2.4.8
+  hive_generator: ^2.0.1
+  json_serializable: ^6.7.1
+  riverpod_generator: ^2.3.9
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+
+  fonts:
+    - family: PingFang
+      fonts:
+        - asset: assets/fonts/PingFang-Regular.ttf
+        - asset: assets/fonts/PingFang-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/PingFang-Semibold.ttf
+          weight: 600
