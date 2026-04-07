@@ -1,0 +1,117 @@
+name: React Web CI/CD
+
+on:
+  push:
+    branches: [main]
+    paths: [react_web/**]
+  pull_request:
+    branches: [main]
+    paths: [react_web/**]
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  # 阶段一：安装 + Lint
+  lint:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: react_web/package-lock.json
+
+      - name: Install dependencies
+        run: cd react_web && npm ci
+
+      - name: Run ESLint
+        run: cd react_web && npm run lint
+
+      - name: Run TypeScript check
+        run: cd react_web && npm run type-check || npx tsc --noEmit
+
+  # 阶段二：测试
+  test:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: react_web/package-lock.json
+
+      - name: Install dependencies
+        run: cd react_web && npm ci
+
+      - name: Run tests (CI mode)
+        run: cd react_web && npm run test -- --coverage --watchAll=false
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+        if: success()
+        with:
+          files: ./react_web/coverage/lcov.info
+
+  # 阶段三：构建
+  build:
+    name: Build Production
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: react_web/package-lock.json
+
+      - name: Install dependencies
+        run: cd react_web && npm ci
+
+      - name: Build
+        run: cd react_web && npm run build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: linguaflow-web-dist
+          path: react_web/dist
+          retention-days: 7
+
+  # 阶段四：部署到静态托管（Vercel / Netlify / S3）
+  deploy:
+    name: Deploy to Hosting
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: production
+      url: https://linguaflow.com
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Vercel (示例)
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          working-directory: ./react_web/dist

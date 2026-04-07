@@ -1,0 +1,119 @@
+name: Flutter App CI/CD
+
+on:
+  push:
+    branches: [main]
+    paths: [flutter_app/**]
+  pull_request:
+    branches: [main]
+    paths: [flutter_app/**]
+
+env:
+  FLUTTER_VERSION: '3.24.0'
+
+jobs:
+  # 阶段一：静态分析
+  analyze:
+    name: Static Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Clone Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-flutter-${{ hashFiles('flutter_app/pubspec.lock') }}
+
+      - name: Get dependencies
+        run: cd flutter_app && flutter pub get
+
+      - name: Run analyzer
+        run: cd flutter_app && flutter analyze --no-fatal-infos --no-fatal-warnings
+
+  # 阶段二：测试
+  test:
+    name: Widget Tests
+    runs-on: ubuntu-latest
+    needs: analyze
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Clone Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+
+      - name: Get dependencies
+        run: cd flutter_app && flutter pub get
+
+      - name: Run widget tests
+        run: cd flutter_app && flutter test --coverage
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+        if: success()
+        with:
+          files: ./flutter_app/coverage/lcov.info
+
+  # 阶段三：构建 Android APK（release）
+  build-android:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Clone Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+
+      - name: Get dependencies
+        run: cd flutter_app && flutter pub get
+
+      - name: Decode keystore
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 -d > flutter_app/app-release.jks
+
+      - name: Build release APK
+        run: |
+          cd flutter_app
+          flutter build apk --release \
+            --key-properties-file=./key.properties
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+
+      - name: Upload APK as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: linguaflow-android-apk
+          path: flutter_app/build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 14
+
+  # 阶段四：构建 iOS（需 macOS，需要配额，这里仅作占位）
+  # build-ios:
+  #   runs-on: macos-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #     - name: Clone Flutter SDK
+  #       uses: subosito/flutter-action@v2
+  #     - name: Build iOS
+  #       run: cd flutter_app && flutter build ipa --release
