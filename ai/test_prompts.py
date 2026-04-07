@@ -16,9 +16,11 @@ from pathlib import Path
 from typing import Optional
 
 # ===================== 配置 =====================
+# 火山引擎 Ark API（非官网 DeepSeek）
+# 火山引擎控制台：https://console.volcengine.com/ark/region:ark+cn-beijing/endpoint
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
-DEEPSEEK_BASE_URL = "https://api.deepseek.com/v1"
-MODEL = "deepseek-chat"
+DEEPSEEK_BASE_URL = "https://ark.cn-beijing.volces.com/api/v3"
+MODEL = "deepseek-v3-250324"  # 火山引擎内可用的 DeepSeek V3 模型
 
 PROMPTS_DIR = Path(__file__).parent / "prompts"
 OUTPUT_FILE = Path(__file__).parent / "test_results.json"
