@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinguaFlow 文档管理中心</title>
+  <style>
+    :root {
+      --primary: #4F46E5; --primary-light: #818CF8; --primary-dark: #3730A3;
+      --bg: #F8FAFC; --card: #FFFFFF; --text: #1E293B; --text-muted: #64748B;
+      --border: #E2E8F0;
+      --pm-color: #7C3AED; --pm-bg: #F5F3FF; --pm-border: #DDD6FE;
+      --pgm-color: #0EA5E9; --pgm-bg: #F0F9FF; --pgm-border: #BAE6FD;
+      --exp-color: #10B981; --exp-bg: #ECFDF5; --exp-border: #A7F3D0;
+      --ci-color: #F59E0B; --ci-bg: #FFFBEB; --ci-border: #FDE68A;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    header { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); color: white; padding: 36px 0 30px; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .badge { display: inline-block; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 3px 12px; font-size: 12px; margin-bottom: 10px; }
+    h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+    .sub { font-size: 14px; opacity: 0.85; }
+    .header-stats { display: flex; gap: 28px; margin-top: 20px; }
+    .stat-item { display: flex; flex-direction: column; }
+    .stat-value { font-size: 24px; font-weight: 700; }
+    .stat-label { font-size: 12px; opacity: 0.8; }
+    .tab-nav { background: white; border-bottom: 2px solid var(--border); position: sticky; top: 0; z-index: 10; }
+    .tab-nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; }
+    .tab-btn { padding: 14px 20px; border: none; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--text-muted); border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.2s; display: flex; align-items: center; gap: 7px; white-space: nowrap; }
+    .tab-btn:hover { color: var(--primary); }
+    .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+    .count { background: var(--border); border-radius: 10px; padding: 1px 7px; font-size: 12px; }
+    .tab-btn.active .count { background: var(--primary-light); color: white; }
+    main { max-width: 1100px; margin: 0 auto; padding: 28px 24px; }
+    .section { display: none; }
+    .section.active { display: block; }
+    .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .section-title { font-size: 16px; font-weight: 600; }
+    .section-badge { font-size: 12px; padding: 3px 10px; border-radius: 12px; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; transition: all 0.2s; text-decoration: none; color: var(--text); display: block; }
+    .card:hover { border-color: var(--primary); box-shadow: 0 4px 16px rgba(79,70,229,0.12); transform: translateY(-2px); }
+    .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
+    .card-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .card-date { font-size: 12px; color: var(--text-muted); }
+    .card-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; line-height: 1.4; }
+    .card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+    .card-footer { display: flex; align-items: center; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+    .card-tag { font-size: 11px; padding: 2px 8px; border-radius: 6px; }
+    .card-tag.pm { background: var(--pm-bg); color: var(--pm-color); }
+    .card-tag.pgm { background: var(--pgm-bg); color: var(--pgm-color); }
+    .card-tag.exp { background: var(--exp-bg); color: var(--exp-color); }
+    .card-tag.ci { background: var(--ci-bg); color: var(--ci-color); }
+    .card-tag.core { background: #FEE2E2; color: #DC2626; }
+    .sprint-board { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+    .sprint-progress { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .sprint-bar-wrap { flex: 1; background: var(--border); border-radius: 6px; height: 10px; overflow: hidden; }
+    .sprint-bar { height: 100%; background: linear-gradient(90deg, var(--pgm-color), #38BDF8); border-radius: 6px; }
+    .sprint-pct { font-size: 14px; font-weight: 700; color: var(--pgm-color); min-width: 44px; }
+    .sprint-tasks { display: flex; gap: 8px; flex-wrap: wrap; }
+    .task-chip { font-size: 12px; padding: 4px 10px; border-radius: 6px; }
+    .task-chip.done { background: #DCFCE7; color: #15803D; }
+    .task-chip.active { background: var(--pgm-bg); color: var(--pgm-color); border: 1px solid var(--pgm-border); }
+    .task-chip.pending { background: #F1F5F9; color: var(--text-muted); }
+    .ci-item { background: var(--card); border: 1px solid var(--ci-border); border-radius: 12px; padding: 18px 20px; display: block; text-decoration: none; color: var(--text); transition: all 0.2s; margin-bottom: 12px; }
+    .ci-item:hover { border-color: var(--ci-color); box-shadow: 0 4px 16px rgba(245,158,11,0.12); transform: translateY(-1px); }
+    .ci-item-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .ci-item-title { font-size: 15px; font-weight: 700; color: var(--ci-color); }
+    .ci-item-date { font-size: 12px; color: var(--text-muted); }
+    .ci-item-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    .ci-item-tags { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+    footer { text-align: center; padding: 24px; color: var(--text-muted); font-size: 13px; }
+    @media (max-width: 640px) { .header-stats { gap: 16px; flex-wrap: wrap; } .tab-nav-inner { overflow-x: auto; } .cards { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="badge">🚀 LinguaFlow Sprint 0</div>
+    <h1>📚 文档管理中心</h1>
+    <p class="sub">产品经理 · 项目经理 · 学术专家 · 竞品监测 — 一站式查阅</p>
+    <div class="header-stats">
+      <div class="stat-item"><span class="stat-value">39</span><span class="stat-label">份文档</span></div>
+      <div class="stat-item"><span class="stat-value">67%</span><span class="stat-label">Sprint 0 进度</span></div>
+      <div class="stat-item"><span class="stat-value">4期</span><span class="stat-label">竞品早报</span></div>
+      <div class="stat-item"><span class="stat-value">2026-04-20</span><span class="stat-label">Sprint 1 启动</span></div>
+    </div>
+  </div>
+</header>
+<nav class="tab-nav">
+  <div class="tab-nav-inner">
+    <button class="tab-btn active" onclick="showTab('overview')">🏠 总览</button>
+    <button class="tab-btn" onclick="showTab('pm')">📋 产品经理 <span class="count">10</span></button>
+    <button class="tab-btn" onclick="showTab('pgm')">📊 项目经理 <span class="count">8</span></button>
+    <button class="tab-btn" onclick="showTab('expert')">🧠 学术专家 <span class="count">6</span></button>
+    <button class="tab-btn" onclick="showTab('ci')">📰 竞品早报 <span class="count">4</span></button>
+  </div>
+</nav>
+<main>
+
+<!-- ======= OVERVIEW ======= -->
+<div id="overview" class="section active">
+  <div class="section-header">
+    <span class="section-title">⚡ Sprint 0 进度看板</span>
+    <span class="section-badge" style="background:var(--pgm-bg);color:var(--pgm-color)">2026-04-06 ~ 2026-04-19</span>
+  </div>
+  <div class="sprint-board">
+    <div class="sprint-progress">
+      <span class="sprint-pct">67%</span>
+      <div class="sprint-bar-wrap"><div class="sprint-bar" style="width:67%"></div></div>
+    </div>
+    <div class="sprint-tasks">
+      <span class="task-chip done">✅ 技术选型</span>
+      <span class="task-chip done">✅ CI/CD 流水线</span>
+      <span class="task-chip done">✅ Git 仓库</span>
+      <span class="task-chip done">✅ 数据库设计</span>
+      <span class="task-chip done">✅ AI Prompt v1.0</span>
+      <span class="task-chip done">✅ Flutter 脚手架</span>
+      <span class="task-chip done">✅ UI 设计稿</span>
+      <span class="task-chip done">✅ PM 看板</span>
+      <span class="task-chip active">⏳ PRD v1.0 终版</span>
+      <span class="task-chip pending">⏸ API 接口文档</span>
+      <span class="task-chip pending">⏸ Go 项目初始化</span>
+      <span class="task-chip pending">⏸ React Web 脚手架</span>
+    </div>
+  </div>
+  <div class="section-header" style="margin-top:16px"><span class="section-title">📌 核心文档快速访问</span></div>
+  <div class="cards">
+    <a class="card" href="./LinguaFlow-Docs/产品文档/产品设计/LinguaFlow-PRD-V1.0-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pm-bg)">📋</div><span class="card-date">核心</span></div>
+      <div class="card-title">PRD v1.0（产品需求文档）</div>
+      <div class="card-desc">产品定位、用户画像、功能列表、MVP 规划</div>
+      <div class="card-footer"><span class="card-tag pm">产品经理</span><span class="card-tag core">核心</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/产品文档/专家融合/LinguaFlow-三学科融合报告-V1.0-20260406.html">
+      <div class="card-header"><div class="card-icon" style="background:var(--exp-bg)">🔗</div><span class="card-date">核心</span></div>
+      <div class="card-title">三学科融合报告（交互式）</div>
+      <div class="card-desc">脑科学 × 认知心理学 × 英语教育 → 产品功能映射</div>
+      <div class="card-footer"><span class="card-tag exp">学术专家</span><span class="card-tag core">核心</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/项目管理文档/项目经理/LinguaFlow-技术选型确认书-V1.0-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pgm-bg)">⚙️</div><span class="card-date">核心</span></div>
+      <div class="card-title">技术选型确认书</div>
+      <div class="card-desc">Flutter + React + Go + DeepSeek-V3 全栈技术栈</div>
+      <div class="card-footer"><span class="card-tag pgm">项目经理</span><span class="card-tag core">核心</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/竞品早报/竞品早报-2026-04-08.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--ci-bg)">📰</div><span class="card-date">最新</span></div>
+      <div class="card-title">竞品早报（第4期）</div>
+      <div class="card-desc">咕噜口语霸榜 · 贾跃亭EAI入局 · 斑马AI校长上岗</div>
+      <div class="card-footer"><span class="card-tag ci">竞品早报</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/团队运作制度.md">
+      <div class="card-header"><div class="card-icon" style="background:#F0FDF4">📌</div><span class="card-date">制度</span></div>
+      <div class="card-title">团队运作制度</div>
+      <div class="card-desc">工作节奏、Agent 调度规则、汇报机制</div>
+      <div class="card-footer"><span class="card-tag pgm">制度</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/团队每日速递-2026-04-08.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--ci-bg)">📊</div><span class="card-date">2026-04-08 · 今日</span></div>
+      <div class="card-title">团队每日速递（第1期）</div>
+      <div class="card-desc">Sprint 0 进度 67% · 竞品早报摘要 · 阻塞项提醒 · 明日待办</div>
+      <div class="card-footer"><span class="card-tag pgm">今日速递</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/开发规范文档/GitHub-Secrets-配置指南.md">
+      <div class="card-header"><div class="card-icon" style="background:#FFF7ED">🔐</div><span class="card-date">已更新</span></div>
+      <div class="card-title">GitHub Secrets 配置指南</div>
+      <div class="card-desc">DeepSeek API（火山引擎）/ Docker / SSH 密钥配置</div>
+      <div class="card-footer"><span class="card-tag pgm">开发规范</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ======= PM ======= -->
+<div id="pm" class="section">
+  <div class="section-header">
+    <span class="section-title">📋 产品经理文档</span>
+    <span class="section-badge" style="background:var(--pm-bg);color:var(--pm-color)">10 份</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="./LinguaFlow-Docs/产品文档/产品设计/LinguaFlow-PRD-V1.0-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pm-bg)">📋</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">PRD v1.0（完整版）</div>
+      <div class="card-desc">产品定位、用户画像、竞品分析、功能规划、优先级排序</div>
+      <div class="card-footer"><span class="card-tag pm">核心文档</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/产品文档/产品设计/PRD-v1.0-目录.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pm-bg)">🗂️</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">PRD v1.0 目录</div>
+      <div class="card-desc">PRD 各章节索引与导航</div>
+      <div class="card-footer"><span class="card-tag pm">PRD</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/产品文档/产品设计/LinguaFlow-商业评估-V1.0-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pm-bg)">💰</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">商业评估报告</div>
+      <div class="card-desc">市场规模、商业模式、盈亏平衡分析、首年成本估算</div>
+      <div class="card-footer"><span class="card-tag pm">商业</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/产品文档/产品设计/LinguaFlow-产品定位科学论证-V1.0-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pm-bg)">🔬</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">产品定位科学论证</div>
+      <div class="card-desc">核心价值主张与学术依据支撑</div>
+      <div class="card-footer"><span class="card-tag pm">产品定位</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/产品文档/产品设计/LinguaFlow-UI设计方案-V1.0-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pm-bg)">🎨</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">UI 设计方案</div>
+      <div class="card-desc">Flutter 界面设计规范、组件定义、交互流程</div>
+      <div class="card-footer"><span class="card-tag pm">设计</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/产品监控方案/LinguaFlow-产品监控方案-V1.0-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pm-bg)">📊</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">产品监控方案</div>
+      <div class="card-desc">DAU / 留存 / 付费 / AI 质量 四大核心指标监控体系</div>
+      <div class="card-footer"><span class="card-tag pm">运营</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/产品监控方案/LinguaFlow-产品优化需求池-V1.0-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pm-bg)">🗃️</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">产品优化需求池</div>
+      <div class="card-desc">待处理功能优化建议与需求优先级排序</div>
+      <div class="card-footer"><span class="card-tag pm">需求池</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/产品监控方案/产品早报-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--ci-bg)">🌅</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">产品早报（第1期）</div>
+      <div class="card-desc">产品经理 Agent 每日行业动态早报</div>
+      <div class="card-footer"><span class="card-tag ci">早报</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/产品监控方案/产品日报-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pm-bg)">📅</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">产品日报（第1期）</div>
+      <div class="card-desc">产品经理 Agent 当日工作进展日报</div>
+      <div class="card-footer"><span class="card-tag pm">日报</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/产品文档/用户调研/腾讯问卷-题目内容.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pm-bg)">📝</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">用户调研问卷</div>
+      <div class="card-desc">腾讯问卷题目内容 — 目标用户需求调研</div>
+      <div class="card-footer"><span class="card-tag pm">用户调研</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ======= PGM ======= -->
+<div id="pgm" class="section">
+  <div class="section-header">
+    <span class="section-title">📊 项目经理文档</span>
+    <span class="section-badge" style="background:var(--pgm-bg);color:var(--pgm-color)">8 份</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="./LinguaFlow-Docs/Sprint看板.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pgm-bg)">📊</div><span class="card-date">实时更新</span></div>
+      <div class="card-title">Sprint 0 进度看板</div>
+      <div class="card-desc">实时任务状态、阻塞项、风险预警、Sprint 1 预告</div>
+      <div class="card-footer"><span class="card-tag pgm">看板</span><span class="card-tag core">核心</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/项目管理文档/项目经理/LinguaFlow-项目管理计划书-V1.0-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pgm-bg)">📐</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">项目管理计划书</div>
+      <div class="card-desc">Sprint 规划、里程碑、风险评估、资源计划</div>
+      <div class="card-footer"><span class="card-tag pgm">核心文档</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/项目管理文档/项目经理/LinguaFlow-Sprint0-启动计划书-V1.0-20260406.html">
+      <div class="card-header"><div class="card-icon" style="background:var(--pgm-bg)">🚀</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">Sprint 0 启动计划书</div>
+      <div class="card-desc">Sprint 目标、范围、团队分工、Definition of Done</div>
+      <div class="card-footer"><span class="card-tag pgm">Sprint</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/项目管理文档/项目经理/LinguaFlow-技术选型确认书-V1.0-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pgm-bg)">⚙️</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">技术选型确认书</div>
+      <div class="card-desc">Flutter / React / Go / DeepSeek-V3 / PostgreSQL / Redis</div>
+      <div class="card-footer"><span class="card-tag pgm">技术</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/项目管理文档/项目经理/项目日报-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pgm-bg)">📅</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">项目日报（第1期）</div>
+      <div class="card-desc">项目经理 Agent 当日工作总结</div>
+      <div class="card-footer"><span class="card-tag pgm">日报</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/项目管理文档/项目经理/Sprint0-工作日志-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pgm-bg)">📝</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">Sprint 0 工作日志</div>
+      <div class="card-desc">Sprint 首日工作日志与产出记录</div>
+      <div class="card-footer"><span class="card-tag pgm">日志</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/项目管理文档/项目经理/风险清单-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pgm-bg)">⚠️</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">风险清单</div>
+      <div class="card-desc">项目风险识别、等级评估、应对策略</div>
+      <div class="card-footer"><span class="card-tag pgm">风险</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/测试与上线方案/LinguaFlow-测试与上线方案-V1.0-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--pgm-bg)">🧪</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">测试与上线方案</div>
+      <div class="card-desc">AI 质量测试矩阵 / 灰度发布策略 / 回滚机制</div>
+      <div class="card-footer"><span class="card-tag pgm">测试</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ======= EXPERT ======= -->
+<div id="expert" class="section">
+  <div class="section-header">
+    <span class="section-title">🧠 学术专家文档</span>
+    <span class="section-badge" style="background:var(--exp-bg);color:var(--exp-color)">6 份</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="./LinguaFlow-Docs/产品文档/专家融合/LinguaFlow-三学科融合报告-V1.0-20260406.html">
+      <div class="card-header"><div class="card-icon" style="background:var(--exp-bg)">🔗</div><span class="card-date">核心报告</span></div>
+      <div class="card-title">三学科融合报告（交互式）</div>
+      <div class="card-desc">脑科学 × 认知心理学 × 英语教育 → 产品功能设计映射</div>
+      <div class="card-footer"><span class="card-tag exp">核心</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/产品文档/学术研究专家/LinguaFlow-专家报告-脑科学-V1.0-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--exp-bg)">🧠</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">脑科学专家报告</div>
+      <div class="card-desc">神经机制分析 — 记忆力与场景关联的科学原理</div>
+      <div class="card-footer"><span class="card-tag exp">脑科学</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/产品文档/学术研究专家/LinguaFlow-认知流程图-脑科学专家-V1.0-20260406.html">
+      <div class="card-header"><div class="card-icon" style="background:var(--exp-bg)">🗺️</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">脑科学认知流程图</div>
+      <div class="card-desc">神经机制 → 功能设计的推导路径图（交互式）</div>
+      <div class="card-footer"><span class="card-tag exp">可视化</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/产品文档/学术研究专家/LinguaFlow-专家报告-认知心理学-V1.0-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--exp-bg)">🧩</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">认知心理学专家报告</div>
+      <div class="card-desc">艾宾浩斯遗忘曲线 / 情境记忆理论 → 复习机制设计依据</div>
+      <div class="card-footer"><span class="card-tag exp">心理学</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/产品文档/学术研究专家/LinguaFlow-认知流程图-认知心理学专家-V1.0-20260406.html">
+      <div class="card-header"><div class="card-icon" style="background:var(--exp-bg)">🧩</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">认知心理学认知流程图</div>
+      <div class="card-desc">认知规律 → 功能设计的推导路径图（交互式）</div>
+      <div class="card-footer"><span class="card-tag exp">可视化</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/产品文档/学术研究专家/LinguaFlow-专家报告-英语教育-V1.0-20260406.md">
+      <div class="card-header"><div class="card-icon" style="background:var(--exp-bg)">📖</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">英语教育专家报告</div>
+      <div class="card-desc">词汇习得理论 / Input Hypothesis → 内容质量标准</div>
+      <div class="card-footer"><span class="card-tag exp">教育学</span></div>
+    </a>
+    <a class="card" href="./LinguaFlow-Docs/产品文档/学术研究专家/LinguaFlow-认知流程图-英语教育专家-V1.0-20260406.html">
+      <div class="card-header"><div class="card-icon" style="background:var(--exp-bg)">📖</div><span class="card-date">2026-04-06</span></div>
+      <div class="card-title">英语教育认知流程图</div>
+      <div class="card-desc">教学理论 → 功能设计的推导路径图（交互式）</div>
+      <div class="card-footer"><span class="card-tag exp">可视化</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ======= CI ======= -->
+<div id="ci" class="section">
+  <div class="section-header">
+    <span class="section-title">📰 竞品早报</span>
+    <span class="section-badge" style="background:var(--ci-bg);color:var(--ci-color)">每日 09:00 自动更新</span>
+  </div>
+  <a class="ci-item" href="./LinguaFlow-Docs/竞品早报/竞品早报-2026-04-08.md">
+    <div class="ci-item-header">
+      <span class="ci-item-title">📰 竞品早报（第4期）</span>
+      <span class="ci-item-date">2026-04-08 · 今日</span>
+    </div>
+    <div class="ci-item-desc">
+      <strong>今日摘要：</strong>咕噜口语霸榜（2000万+用户）· 贾跃亭EAI机器人入局家庭教育 · 斑马AI校长正式上岗<br/>
+      <strong>竞品动态：</strong>可栗口语主打74.8%音素级纠错 · 多邻国v6.72.4新增粤语课 · 头部效应加剧<br/>
+      <strong>关键启示：</strong>AI口语赛道壁垒已从"功能数量"升级为"精准度+场景闭环深度"，应重点打磨音素级纠错和场景化学习路径
+    </div>
+    <div class="ci-item-tags">
+      <span class="card-tag ci">咕噜口语</span>
+      <span class="card-tag ci">可栗口语</span>
+      <span class="card-tag ci">多邻国</span>
+      <span class="card-tag ci">EAI机器人</span>
+      <span class="card-tag ci">斑马AI校长</span>
+      <span class="card-tag ci">行业趋势</span>
+    </div>
+    </a>
+  <a class="ci-item" href="./LinguaFlow-Docs/竞品早报/竞品早报-2026-04-07.md">
+    <div class="ci-item-header">
+      <span class="ci-item-title">📰 竞品早报（第3期）</span>
+      <span class="ci-item-date">2026-04-07</span>
+    </div>
+    <div class="ci-item-desc">
+      <strong>今日摘要：</strong>百词斩服务器故障引发信任危机 · 全球语言学习市场 2026 年预计达 670 亿美元 · 多邻国深化 AI First 战略<br/>
+      <strong>竞品动态：</strong>墨墨背单词突破 3 亿下载量 · 纳米盒推出 AI 学习眼镜（2299元）· Coursera 与 Udemy 合并预计下半年完成<br/>
+      <strong>关键启示：</strong>AI 个性化是必答题 · 稳定性是信任基础 · 内容+硬件是下一个增长极
+    </div>
+    <div class="ci-item-tags">
+      <span class="card-tag ci">多邻国</span>
+      <span class="card-tag ci">墨墨背单词</span>
+      <span class="card-tag ci">百词斩</span>
+      <span class="card-tag ci">纳米盒</span>
+      <span class="card-tag ci">行业趋势</span>
+    </div>
+    </a>
+  <a class="ci-item" href="./LinguaFlow-Docs/竞品早报/LinguaFlow-竞品早报-20260406.md">
+    <div class="ci-item-header">
+      <span class="ci-item-title">📰 竞品早报（第2期）</span>
+      <span class="ci-item-date">2026-04-06</span>
+    </div>
+    <div class="ci-item-desc">
+      <strong>今日摘要：</strong>多邻国股价上涨 11% · 英语学习 App 功能同质化严重 · 小红书成为学习分享新阵地<br/>
+      <strong>竞品动态：</strong>不背单词新增影视例句功能 · 扇贝单词上线 AI 口语对练 · 百词斩推出会员专属场景<br/>
+      <strong>关键启示：</strong>内容差异化是核心壁垒 · 社区运营提升留存
+    </div>
+    <div class="ci-item-tags">
+      <span class="card-tag ci">多邻国</span>
+      <span class="card-tag ci">不背单词</span>
+      <span class="card-tag ci">扇贝</span>
+      <span class="card-tag ci">百词斩</span>
+    </div>
+  </a>
+  <a class="ci-item" href="./LinguaFlow-Docs/竞品早报/LinguaFlow-竞品早报-20260407.md">
+    <div class="ci-item-header">
+      <span class="ci-item-title">🌅 竞品早报（第1期）</span>
+      <span class="ci-item-date">2026-04-06</span>
+    </div>
+    <div class="ci-item-desc">
+      产品经理 Agent 首发行业早报，涵盖教育科技赛道最新动态、竞品功能更新、用户评论分析。
+    </div>
+    <div class="ci-item-tags">
+      <span class="card-tag pm">竞品早报</span>
+      <span class="card-tag ci">首发</span>
+    </div>
+  </a>
+</div>
+
+<!-- ======= SCRIPT ======= -->
+<script>
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    if (b.textContent.includes(id==='overview'?'总览':id==='pm'?'产品经理':id==='pgm'?'项目经理':id==='expert'?'学术专家':'竞品')) {
+      b.classList.add('active');
+    }
+  });
+  document.querySelectorAll('.tab-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  var btns = document.querySelectorAll('.tab-btn');
+  var tabMap = {overview:0, pm:1, pgm:2, expert:3, ci:4};
+  btns[tabMap[id]||0].classList.add('active');
+}
+</script>
+</main>
+<footer>
+  <p>LinguaFlow 文档管理中心 · Sprint 0 · 最后更新：2026-04-07</p>
+</footer>
+</body>
+</html>
