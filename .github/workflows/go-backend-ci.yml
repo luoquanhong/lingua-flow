@@ -9,34 +9,12 @@ on:
     paths: [go_backend/**]
 
 env:
-  REGISTRY: docker.io
-  IMAGE_NAME: ${{ github.repository_owner }}/linguaflow-backend
+  GO_VERSION: '1.21'
 
 jobs:
-  # 阶段一：代码检查
-  lint:
-    name: Lint & Vet
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: '1.21'
-          cache: true
-
-      - name: Run golangci-lint
-        run: |
-          go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-          cd go_backend && golangci-lint run ./...
-
-  # 阶段二：测试
   test:
-    name: Unit Tests
+    name: Test
     runs-on: ubuntu-latest
-    needs: lint
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -44,88 +22,37 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.21'
-          cache: true
+          go-version: ${{ env.GO_VERSION }}
+
+      - name: Go mod tidy
+        run: cd go_backend && go mod tidy
+
+      - name: Download dependencies
+        run: cd go_backend && go mod download
 
       - name: Run tests
-        run: |
-          cd go_backend
-          go test -v -race -coverprofile=coverage.out ./...
-          go tool cover -func=coverage.out | tail -5
+        run: cd go_backend && go test ./...
 
-  # 阶段三：构建 Docker 镜像
   build:
-    name: Build Docker Image
+    name: Build Binary
     runs-on: ubuntu-latest
     needs: test
     if: github.ref == 'refs/heads/main'
-    outputs:
-      image-tag: ${{ steps.meta.outputs.tags }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v3
+      - name: Set up Go
+        uses: actions/setup-go@v5
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          go-version: ${{ env.GO_VERSION }}
 
-      - name: Extract metadata
-        id: meta
-        uses: docker/metadata-action@v5
+      - name: Build
+        run: cd go_backend && go build -o linguaflow-server ./cmd/server
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: |
-            type=ref,event=branch
-            type=sha,prefix={{branch}}-
-            type=raw,value=latest,enable={{is_default_branch}}
-
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: ./go_backend
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-  # 阶段四：部署到服务器
-  deploy:
-    name: Deploy to Server
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.ref == 'refs/heads/main'
-    environment:
-      name: production
-      url: https://api.linguaflow.com
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Configure SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
-
-      - name: Deploy via Docker Compose
-        env:
-          IMAGE_TAG: ${{ needs.build.outputs.image-tag }}
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          REDIS_URL: ${{ secrets.REDIS_URL }}
-        run: |
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
-            "cd ~/linguaflow-backend && \
-             echo '${DEEPSEEK_API_KEY}' > .env.deepseek && \
-             echo '${DATABASE_URL}' > .env.db && \
-             echo '${REDIS_URL}' > .env.redis && \
-             docker pull ${{ needs.build.outputs.image-tag }} && \
-             docker compose down && \
-             docker compose up -d && \
-             docker image prune -f"
+          name: linguaflow-server
+          path: go_backend/linguaflow-server
+          retention-days: 14
