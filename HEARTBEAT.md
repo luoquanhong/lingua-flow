@@ -24,7 +24,7 @@
 测试人员职责（由我或项目经理 Agent 执行）：
 
 **A. GitHub Pages 可访问性测试**
-- 访问 `https://yb8js3jf1klk.space.minimaxi.com`
+- 访问 `https://wx1pgbo9gp2l.space.minimaxi.com`
 - 确认文档中心页面可正常加载
 - 确认左上角总文档数量统计正常（不报错）
 
@@ -157,7 +157,7 @@ Sprint 0 完成度：**67%（8/12）**
 
 | 文档 | 链接/路径 |
 |------|---------|
-| 项目手册（总览） | https://yb8js3jf1klk.space.minimaxi.com |
+| 项目手册（总览） | https://wx1pgbo9gp2l.space.minimaxi.com |
 | 技术选型确认书 | https://nmgokmthfs2t.space.minimaxi.com |
 | 今日日报（第1期） | https://4wnalf2orfwf.space.minimaxi.com |
 | GitHub Secrets 配置指南 | /workspace/LinguaFlow-Docs/开发规范文档/GitHub-Secrets-配置指南.md |
