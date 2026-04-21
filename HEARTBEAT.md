@@ -185,3 +185,12 @@ Sprint 0 完成度：**67%（8/12）**
 | React Web 脚手架 | ⏳ 待开始 | Week 2 |
 
 **Sprint 0 进度：8/12 ✅ 完成 67%**
+
+## QA 检测日志（自动记录）
+
+### 2026-04-21 QA 结果
+- 文档中心新URL：`https://wx1pgbo9gp2l.space.minimaxi.com`
+- 旧URL `https://yb8js3jf1klk.space.minimaxi.com` 已停用
+- ✅ 首页/Sprint看板/竞品早报04-15/04-17/04-20/团队每日速递 全部 200
+- ⚠️ 核心项目文档(PRD/三学科报告)存于lingua-flow独立仓库，需单独部署
+- 同步修复：HEARTBEAT.md URL已更新，commit 868627c 已推送
