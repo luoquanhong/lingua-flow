@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>团队每日速递-2026-04-08 — LinguaFlow 文档中心</title>
+  <style>
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;font-size:16px;line-height:1.8;color:#1a1a2e;background:#f8f9fc;padding:24px 220px 80px 24px;max-width:100%}
+.toc-sidebar{position:fixed;right:16px;top:80px;width:190px;background:white;border:1px solid #e2e8f0;border-radius:12px;padding:14px;max-height:calc(100vh-100px);overflow-y:auto;z-index:100;box-shadow:0 4px 16px rgba(0,0,0,0.08);font-size:12px;transition:opacity 0.3s}
+.toc-sidebar-title{font-weight:700;font-size:12px;color:#1a1a2e;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #e2e8f0}
+.toc-item{display:block;padding:5px 6px;border-radius:6px;color:#64748b;font-size:12px;line-height:1.4;cursor:pointer;text-decoration:none;transition:all 0.15s}
+.toc-item:hover{color:#4F46E5;background:#f5f3ff}
+.toc-item.active{color:#4F46E5;font-weight:700;background:#f5f3ff;border-left:2px solid #4F46E5;padding-left:4px}
+.toc-h3{padding-left:14px;font-size:11px}
+.toc-h4{padding-left:26px;font-size:11px;color:#94a3b8}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:#4F46E5;color:white;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:600;margin-bottom:20px;text-decoration:none}
+.back-btn:hover{background:#3730A3;text-decoration:none}
+.document-meta{font-size:13px;color:#888;margin-bottom:20px;padding:8px 14px;background:#f8f9fc;border-radius:8px;border:1px solid #e2e8f0}
+a{color:#4F46E5;text-decoration:none}a:hover{text-decoration:underline}
+h1{font-size:1.8em;font-weight:800;color:#0f0f1a;border-bottom:3px solid #4F46E5;padding-bottom:10px;margin:28px 0 16px;line-height:1.3}
+h2{font-size:1.35em;font-weight:700;color:#1a1a2e;margin:24px 0 10px;border-left:4px solid #4F46E5;padding-left:10px}
+h3{font-size:1.1em;font-weight:700;color:#333;margin:20px 0 8px}
+h4{font-size:1em;font-weight:700;color:#555;margin:16px 0 6px}
+p{margin:12px 0;color:#333}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px;overflow-x:auto;display:block}
+th{background:#4F46E5;color:white;padding:10px 14px;text-align:left;font-weight:600;position:sticky;top:0;z-index:1}
+td{padding:9px 14px;border:1px solid #e2e8f0}
+tr:nth-child(even) td{background:#f1f5f9}tr:nth-child(odd) td{background:#fff}
+ul,ol{padding-left:24px;margin:10px 0}li{margin:5px 0;color:#333}
+blockquote{border-left:4px solid #4F46E5;margin:14px 0;padding:10px 16px;background:#f0f0ff;border-radius:0 8px 8px 0;color:#555;font-style:italic}
+code{background:#f1f5f9;border:1px solid #e2e8f0;border-radius:4px;padding:2px 6px;font-size:0.88em;font-family:'Fira Code','Consolas',monospace;color:#7C3AED}
+pre{background:#1e1e2e;border-radius:10px;padding:16px 20px;overflow-x:auto;margin:14px 0}
+pre code{background:none;border:none;color:#a6e3a1;font-size:0.9em;padding:0}
+hr{border:none;border-top:2px solid #e2e8f0;margin:24px 0}img{max-width:100%;height:auto;border-radius:8px;margin:8px 0}
+@media(max-width:900px){.toc-sidebar{display:none}body{padding:24px 16px 80px}}
+</style>
+</head>
+<body>
+  <a class="back-btn" href="javascript:void(0)" onclick="history.back()">&#8592; 文档管理中心</a>
+  <div class="document-meta">&#128193; 文档</div>
+  <h1 id="linguaflow-团队每日速递">LinguaFlow 团队每日速递</h1>
+<p><strong>日期：</strong> 2026年4月8日（周二）
+<strong>发布人：</strong> 小红（项目总监）
+<strong>Sprint：</strong> Sprint 0（第14天 / 共14天）</p>
+<hr>
+<h2 id="sprint-0-整体进度-完成率67812-交付物-状态-数量-详情-已完成-8项-技术选型cicdgit仓库数据库设计ai-promptflutter脚手架ui设计pm看板prd大纲-进行中-1项-prd-v10-终版-待开始-3项-api接口文档go项目初始化react-web脚手架-今日完成事项-竞品早报第4期-完成搜索多知网芥末堆行业媒体共11条内容-竞品早报生成完毕-文件竞品早报竞品早报20260408md-本期要点-咕噜口语霸榜2000万用户口碑文章密集轰炸-贾跃亭eai机器人入局家庭教育赛道-斑马ai校长正式上岗ai教育走向规模化-多邻国新增粤语课全球178亿用户护城河加宽-结论-ai口语学习赛道技术壁垒已从quot功能数量quot升级为quot精准度场景闭环深度quotlinguaflow-应重点打磨音素级纠错和场景化学习路径避免陷入功能堆叠竞争-sprint-进度核查-sprint看板已更新-github仓库状态已核查-阻塞项与风险-风险-等级-说明-处理建议-github-actions-secrets-未配置-中-cicd流水线无法真正跑通-尽快配置-deepseek_api_keydocker_username-等-后端3项任务均未开始-中-week-2后半段需集中推进-建议明日优先启动后端任务-pm-agent-执行不稳定-中-历史出现超时情况-prd终版需人工兜底-明日待推进20260409-优先级最高-配置-github-secretsdeepseek_api_keydocker_usernamedocker_passwordssh_private_keyserver_hostserver_user-次优先-prd-v10-终版产品经理-agent-同步推进-api接口文档-go项目初始化-今日新产出文档-文档-路径-说明-竞品早报第4期-竞品早报竞品早报20260408md-产品经理agent搜索生成-竞品早报搜索结果-竞品早报搜索结果20260408md-原始搜索素材-团队每日速递-本文件-小红汇总-sprint-1-预告">📊 Sprint 0 整体进度</h2>
+<p><strong>完成率：67%（8/12 交付物）</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>数量</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>✅ 已完成</td>
+<td>8项</td>
+<td>技术选型、CI/CD、Git仓库、数据库设计、AI Prompt、Flutter脚手架、UI设计、PM看板+PRD大纲</td>
+</tr>
+<tr>
+<td>⏳ 进行中</td>
+<td>1项</td>
+<td>PRD v1.0 终版</td>
+</tr>
+<tr>
+<td>⏳ 待开始</td>
+<td>3项</td>
+<td>API接口文档、Go项目初始化、React Web脚手架</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>📋 今日完成事项</h2>
+<h3>竞品早报（第4期）</h3>
+<ul>
+<li>✅ 完成搜索（多知网、芥末堆、行业媒体共11条内容）</li>
+<li>✅ 竞品早报生成完毕</li>
+<li>📄 文件：<code>/竞品早报/竞品早报-2026-04-08.md</code></li>
+</ul>
+<p><strong>本期要点：</strong></p>
+<ul>
+<li>🗣️ 咕噜口语霸榜，2000万+用户，口碑文章密集轰炸</li>
+<li>🤖 贾跃亭EAI机器人入局家庭教育赛道</li>
+<li>🏫 斑马AI校长正式上岗，AI教育走向规模化</li>
+<li>🌐 多邻国新增粤语课，全球1.78亿用户护城河加宽</li>
+</ul>
+<p><strong>结论：</strong> AI口语学习赛道技术壁垒已从&quot;功能数量&quot;升级为&quot;精准度+场景闭环深度&quot;，LinguaFlow 应重点打磨<strong>音素级纠错</strong>和<strong>场景化学习路径</strong>，避免陷入功能堆叠竞争。</p>
+<h3>Sprint 进度核查</h3>
+<ul>
+<li>✅ Sprint看板已更新</li>
+<li>✅ GitHub仓库状态已核查</li>
+</ul>
+<hr>
+<h2>⚠️ 阻塞项与风险</h2>
+<table>
+<thead>
+<tr>
+<th>风险</th>
+<th>等级</th>
+<th>说明</th>
+<th>处理建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GitHub Actions Secrets 未配置</td>
+<td>🟡 中</td>
+<td>CI/CD流水线无法真正跑通</td>
+<td>尽快配置 DEEPSEEK_API_KEY、DOCKER_USERNAME 等</td>
+</tr>
+<tr>
+<td>后端3项任务均未开始</td>
+<td>🟡 中</td>
+<td>Week 2后半段需集中推进</td>
+<td>建议明日优先启动后端任务</td>
+</tr>
+<tr>
+<td>PM Agent 执行不稳定</td>
+<td>🟡 中</td>
+<td>历史出现超时情况</td>
+<td>PRD终版需人工兜底</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>📅 明日待推进（2026-04-09）</h2>
+<ol>
+<li><strong>优先级最高：</strong> 配置 GitHub Secrets（DEEPSEEK_API_KEY、DOCKER_USERNAME、DOCKER_PASSWORD、SSH_PRIVATE_KEY、SERVER_HOST、SERVER_USER）</li>
+<li><strong>次优先：</strong> PRD v1.0 终版（产品经理 Agent）</li>
+<li><strong>同步推进：</strong> API接口文档 + Go项目初始化</li>
+</ol>
+<hr>
+<h2>📂 今日新产出文档</h2>
+<table>
+<thead>
+<tr>
+<th>文档</th>
+<th>路径</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>竞品早报（第4期）</td>
+<td><code>/竞品早报/竞品早报-2026-04-08.md</code></td>
+<td>产品经理Agent搜索+生成</td>
+</tr>
+<tr>
+<td>竞品早报搜索结果</td>
+<td><code>/竞品早报/搜索结果-2026-04-08.md</code></td>
+<td>原始搜索素材</td>
+</tr>
+<tr>
+<td>团队每日速递</td>
+<td><code>本文件</code></td>
+<td>小红汇总</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🎯 Sprint 1 预告</h2>
+<ul>
+<li><strong>预计启动：</strong> 2026-04-20（周一）</li>
+<li><strong>核心目标：</strong> 单词学习核心流程 MVP</li>
+<li><strong>关键路径：</strong> 用户注册/登录 → 单词添加 → AI场景生成 → 复习闭环</li>
+</ul>
+<hr>
+<p><em>最后更新：2026-04-08 14:20 UTC</em>
+<em>发布人：小红（项目总监）</em></p>
+
+  <div class="toc-sidebar" id="toc-sidebar">
+  <div class="toc-sidebar-title">&#128203; 目录</div>
+        <a class="toc-item" data-id="linguaflow-团队每日速递">LinguaFlow 团队每日速递</a>
+        <a class="toc-item" data-id="sprint-0-整体进度">📊 Sprint 0 整体进度</a>
+        <a class="toc-item" data-id="今日完成事项">📋 今日完成事项</a>
+        <a class="toc-item toc-h3" data-id="竞品早报第4期">竞品早报（第4期）</a>
+        <a class="toc-item toc-h3" data-id="sprint-进度核查">Sprint 进度核查</a>
+        <a class="toc-item" data-id="阻塞项与风险">⚠️ 阻塞项与风险</a>
+        <a class="toc-item" data-id="明日待推进20260409">📅 明日待推进（2026-04-09）</a>
+        <a class="toc-item" data-id="今日新产出文档">📂 今日新产出文档</a>
+        <a class="toc-item" data-id="sprint-1-预告">🎯 Sprint 1 预告</a>
+      </div>
+  <script>
+(function(){
+  var sidebar = document.getElementById('toc-sidebar');
+  if(!sidebar) return;
+
+  // 点击目录项 → 平滑滚动到对应章节
+  sidebar.addEventListener('click',function(e){
+    var link = e.target.closest('.toc-item');
+    if(!link) return;
+    var id = link.getAttribute('data-id');
+    var el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
+  // IntersectionObserver → 滚动时高亮当前章节
+  var tocLinks = sidebar.querySelectorAll('.toc-item');
+  var headingEls = [];
+  document.querySelectorAll('h1[id],h2[id],h3[id],h4[id]').forEach(function(el){
+    headingEls.push(el);
+  });
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        tocLinks.forEach(function(a){
+          a.classList.toggle('active', a.getAttribute('data-id')===entry.target.id);
+        });
+      }
+    });
+  }, {rootMargin:'-20% 0px -70% 0px'});
+
+  headingEls.forEach(function(el){ observer.observe(el); });
+
+  // 滚动 > 120px 时显示，否则隐藏
+  window.addEventListener('scroll',function(){
+    sidebar.style.opacity = window.scrollY<120?'0':'1';
+  },{passive:true});
+  sidebar.style.opacity='0';
+})();
+</script>
+</body>
+</html>
