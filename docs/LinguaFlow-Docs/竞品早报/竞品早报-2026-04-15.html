@@ -1,111 +1,127 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>竞品早报 · 第6期 — 2026-04-15</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>竞品早报/竞品早报-2026-04-15 — LinguaFlow 文档中心</title>
   <style>
-    :root {
-      --primary: #4F46E5; --primary-light: #818CF8; --primary-dark: #3730A3;
-      --bg: #F8FAFC; --card: #FFFFFF; --text: #1E293B; --text-muted: #64748B;
-      --border: #E2E8F0; --accent: #F59E0B;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-    header { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); color: white; padding: 32px 0; }
-    .header-inner { max-width: 800px; margin: 0 auto; padding: 0 24px; }
-    .badge { display: inline-block; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 3px 12px; font-size: 12px; margin-bottom: 8px; }
-    h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
-    .meta { font-size: 13px; opacity: 0.8; }
-    main { max-width: 800px; margin: 28px auto; padding: 0 24px; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; }
-    .card-tag { display: inline-block; background: var(--primary-light); color: white; font-size: 11px; padding: 2px 8px; border-radius: 6px; margin-bottom: 10px; font-weight: 600; }
-    .card-tag.orange { background: #F59E0B; }
-    .card-tag.green { background: #10B981; }
-    .card-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; color: var(--text); }
-    .card-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 10px; }
-    .card-link { font-size: 12px; color: var(--primary); text-decoration: none; }
-    .card-link:hover { text-decoration: underline; }
-    .conclusion { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; border-radius: 12px; padding: 24px; margin-top: 8px; }
-    .conclusion .label { font-size: 12px; opacity: 0.8; margin-bottom: 6px; }
-    .conclusion p { font-size: 15px; line-height: 1.7; font-weight: 500; }
-    .footer { text-align: center; font-size: 12px; color: var(--text-muted); padding: 24px 0; }
-  </style>
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;font-size:16px;line-height:1.8;color:#1a1a2e;background:#f8f9fc;padding:24px 220px 80px 24px;max-width:100%}
+.toc-sidebar{position:fixed;right:16px;top:80px;width:190px;background:white;border:1px solid #e2e8f0;border-radius:12px;padding:14px;max-height:calc(100vh-100px);overflow-y:auto;z-index:100;box-shadow:0 4px 16px rgba(0,0,0,0.08);font-size:12px;transition:opacity 0.3s}
+.toc-sidebar-title{font-weight:700;font-size:12px;color:#1a1a2e;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #e2e8f0}
+.toc-item{display:block;padding:5px 6px;border-radius:6px;color:#64748b;font-size:12px;line-height:1.4;cursor:pointer;text-decoration:none;transition:all 0.15s}
+.toc-item:hover{color:#4F46E5;background:#f5f3ff}
+.toc-item.active{color:#4F46E5;font-weight:700;background:#f5f3ff;border-left:2px solid #4F46E5;padding-left:4px}
+.toc-h3{padding-left:14px;font-size:11px}
+.toc-h4{padding-left:26px;font-size:11px;color:#94a3b8}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:#4F46E5;color:white;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:600;margin-bottom:20px;text-decoration:none}
+.back-btn:hover{background:#3730A3;text-decoration:none}
+.document-meta{font-size:13px;color:#888;margin-bottom:20px;padding:8px 14px;background:#f8f9fc;border-radius:8px;border:1px solid #e2e8f0}
+a{color:#4F46E5;text-decoration:none}a:hover{text-decoration:underline}
+h1{font-size:1.8em;font-weight:800;color:#0f0f1a;border-bottom:3px solid #4F46E5;padding-bottom:10px;margin:28px 0 16px;line-height:1.3}
+h2{font-size:1.35em;font-weight:700;color:#1a1a2e;margin:24px 0 10px;border-left:4px solid #4F46E5;padding-left:10px}
+h3{font-size:1.1em;font-weight:700;color:#333;margin:20px 0 8px}
+h4{font-size:1em;font-weight:700;color:#555;margin:16px 0 6px}
+p{margin:12px 0;color:#333}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px;overflow-x:auto;display:block}
+th{background:#4F46E5;color:white;padding:10px 14px;text-align:left;font-weight:600;position:sticky;top:0;z-index:1}
+td{padding:9px 14px;border:1px solid #e2e8f0}
+tr:nth-child(even) td{background:#f1f5f9}tr:nth-child(odd) td{background:#fff}
+ul,ol{padding-left:24px;margin:10px 0}li{margin:5px 0;color:#333}
+blockquote{border-left:4px solid #4F46E5;margin:14px 0;padding:10px 16px;background:#f0f0ff;border-radius:0 8px 8px 0;color:#555;font-style:italic}
+code{background:#f1f5f9;border:1px solid #e2e8f0;border-radius:4px;padding:2px 6px;font-size:0.88em;font-family:'Fira Code','Consolas',monospace;color:#7C3AED}
+pre{background:#1e1e2e;border-radius:10px;padding:16px 20px;overflow-x:auto;margin:14px 0}
+pre code{background:none;border:none;color:#a6e3a1;font-size:0.9em;padding:0}
+hr{border:none;border-top:2px solid #e2e8f0;margin:24px 0}img{max-width:100%;height:auto;border-radius:8px;margin:8px 0}
+@media(max-width:900px){.toc-sidebar{display:none}body{padding:24px 16px 80px}}
+</style>
 </head>
 <body>
+  <a class="back-btn" href="javascript:void(0)" onclick="history.back()">&#8592; 文档管理中心</a>
+  <div class="document-meta">&#128193; 竞品早报</div>
+  <h1 id="竞品早报-第6期">竞品早报 · 第6期</h1>
+<p><strong>发布日期：</strong> 2026-04-15
+<strong>覆盖周期：</strong> 2026-04-12 ～ 2026-04-15
+<strong>监测来源：</strong> 教育部官网、新华网、人人都是产品经理、新浪财经、中华网、腾讯新闻、界面新闻、声网、腾讯云等</p>
+<hr>
+<h2 id="一政策利好-教育部等五部门联合印发quot人工智能教育quot行动计划-教育部国家发展改革委等五部门于-2026-年-4-月-12-日联合发布教科信20261-号文从国家层面系统性部署-ai-教育这是迄今为止覆盖范围最广力度最大的-ai-教育政策文件对整个赛道形成明确利好-来源教育部官网-httpwwwmoegovcnfbhlive202677927wj-斯坦福报告中美-ai-模型性能差距明显缩小-2026-年-4-月-14-日发布的斯坦福-ai-发展十大趋势报告显示中国多项-ai-指标已居全球前列大模型能力持续提升为国内-ai-教育产品的底层能力提供更强支撑-来源新华网-httpswwwnewscnworld202604140422b835aa25467fa4505aa68876eb4achtml-二竞品动态-星链英语ai-真人教练协同分工模式-2026-年-4-月-10-日报道星链英语明确采用-ai-承担个性化内容共创真人教练专注引导复习的分工模式与-linguaflowquotai-叙事生成-用户自主复习quot的分工逻辑高度一致证明该方向已被竞品验证-来源中华网-httpsdigichinacomarticles20260410202604101843441html-背单词赛道新趋势词文串学-ai-匹配外刊-2026-年-4-月-10-日测评显示场景化语境化的词文串学已成新标杆ai-根据学习词汇匹配外刊同源短文渐成标配与-linguaflowquotai-叙事场景quot的差异化路径不谋而合-来源腾讯新闻-httpsnewsqqcomraina20260410a043ov00-字节阿里开年加速豆包-千问全面入局-ai-教育-字节将quot豆包爱学quot推至核心入口阿里千问新增quot一键搜试卷quot功能巨头全面进入-ai-教育赛道竞争加剧的同时也加速了用户教育-来源界面新闻-httpswwwjiemiancomarticle13997599html-2026-教育科技十大趋势个性化实时调节-情感化-ai-引导-个性化学习路径动态调节ai-情感化交互已成行业共识的技术方向linguaflow-的情感叙事引擎恰好契合这一趋势-来源人人都是产品经理-httpswwwwoshipmcomit6328080html-可栗口语外贸场景-ai-口语覆盖-18-大行业-垂直场景-ai-口语学习已成新赛道入口外贸场景的词库和语境设计为-linguaflow-行业词库拓展提供了参考-来源腾讯云-httpscloudtencentcomdevelopernews3795978-三一句话结论">一、政策利好</h2>
+<p><strong>教育部等五部门联合印发《&quot;人工智能+教育&quot;行动计划》</strong>
+教育部、国家发展改革委等五部门于 2026 年 4 月 12 日联合发布教科信〔2026〕1 号文，从国家层面系统性部署 AI 教育。这是迄今为止覆盖范围最广、力度最大的 AI 教育政策文件，对整个赛道形成明确利好。
+🔗 来源：教育部官网 | <a href="http://www.moe.gov.cn/fbh/live/2026/77927/wj/">http://www.moe.gov.cn/fbh/live/2026/77927/wj/</a></p>
+<p><strong>斯坦福报告：中美 AI 模型性能差距明显缩小</strong>
+2026 年 4 月 14 日发布的斯坦福 AI 发展十大趋势报告显示，中国多项 AI 指标已居全球前列，大模型能力持续提升，为国内 AI 教育产品的底层能力提供更强支撑。
+🔗 来源：新华网 | <a href="https://www.news.cn/world/20260414/0422b835aa25467fa4505aa68876eb4a/c.html">https://www.news.cn/world/20260414/0422b835aa25467fa4505aa68876eb4a/c.html</a></p>
+<hr>
+<h2>二、竞品动态</h2>
+<p><strong>星链英语：AI + 真人教练协同分工模式</strong>
+2026 年 4 月 10 日报道，星链英语明确采用 AI 承担个性化内容共创、真人教练专注引导复习的分工模式——与 LinguaFlow&quot;AI 叙事生成 + 用户自主复习&quot;的分工逻辑高度一致，证明该方向已被竞品验证。
+🔗 来源：中华网 | <a href="https://digi.china.com/articles/20260410/202604101843441.html">https://digi.china.com/articles/20260410/202604101843441.html</a></p>
+<p><strong>背单词赛道新趋势：词文串学 + AI 匹配外刊</strong>
+2026 年 4 月 10 日测评显示，场景化、语境化的词文串学已成新标杆，AI 根据学习词汇匹配外刊同源短文渐成标配——与 LinguaFlow&quot;AI 叙事场景&quot;的差异化路径不谋而合。
+🔗 来源：腾讯新闻 | <a href="https://news.qq.com/rain/a/20260410A043OV00">https://news.qq.com/rain/a/20260410A043OV00</a></p>
+<p><strong>字节/阿里开年加速：豆包 + 千问全面入局 AI 教育</strong>
+字节将&quot;豆包爱学&quot;推至核心入口；阿里千问新增&quot;一键搜试卷&quot;功能；巨头全面进入 AI 教育赛道，竞争加剧的同时也加速了用户教育。
+🔗 来源：界面新闻 | <a href="https://www.jiemian.com/article/13997599.html">https://www.jiemian.com/article/13997599.html</a></p>
+<p><strong>2026 教育科技十大趋势：个性化实时调节 + 情感化 AI 引导</strong>
+个性化学习路径动态调节、AI 情感化交互已成行业共识的技术方向；LinguaFlow 的情感叙事引擎恰好契合这一趋势。
+🔗 来源：人人都是产品经理 | <a href="https://www.woshipm.com/it/6328080.html">https://www.woshipm.com/it/6328080.html</a></p>
+<p><strong>可栗口语：外贸场景 AI 口语，覆盖 18 大行业</strong>
+垂直场景 AI 口语学习已成新赛道入口，外贸场景的词库和语境设计为 LinguaFlow 行业词库拓展提供了参考。
+🔗 来源：腾讯云 | <a href="https://cloud.tencent.com/developer/news/3795978">https://cloud.tencent.com/developer/news/3795978</a></p>
+<hr>
+<h2>三、一句话结论</h2>
+<blockquote>
+<p><strong>政策窗口打开 + 竞品验证模式 + 巨头加速布局，三重利好叠加，LinguaFlow 应尽快上线 MVP 抢占&quot;AI 叙事场景背单词&quot;这一差异化赛道，窗口期预计不超过 2 个季度。</strong></p>
+</blockquote>
+<hr>
+<p><em>本报告由产品经理 Agent 自动生成 · 2026-04-15 09:15 UTC</em></p>
 
-<header>
-  <div class="header-inner">
-    <div class="badge">📰 竞品早报</div>
-    <h1>第6期 · 2026-04-15</h1>
-    <div class="meta">覆盖周期：2026-04-12 ～ 2026-04-15 · 多源监测</div>
-  </div>
-</header>
+  <div class="toc-sidebar" id="toc-sidebar">
+  <div class="toc-sidebar-title">&#128203; 目录</div>
+        <a class="toc-item" data-id="竞品早报-第6期">竞品早报 · 第6期</a>
+        <a class="toc-item" data-id="一政策利好">一、政策利好</a>
+        <a class="toc-item" data-id="二竞品动态">二、竞品动态</a>
+        <a class="toc-item" data-id="三一句话结论">三、一句话结论</a>
+      </div>
+  <script>
+(function(){
+  var sidebar = document.getElementById('toc-sidebar');
+  if(!sidebar) return;
 
-<main>
+  // 点击目录项 → 平滑滚动到对应章节
+  sidebar.addEventListener('click',function(e){
+    var link = e.target.closest('.toc-item');
+    if(!link) return;
+    var id = link.getAttribute('data-id');
+    var el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  });
 
-  <!-- 政策利好 -->
-  <div class="card">
-    <div class="card-tag">📋 政策利好</div>
-    <div class="card-title">教育部等五部门联合印发《"人工智能+教育"行动计划》</div>
-    <div class="card-text">教育部、国家发展改革委等五部门于 2026 年 4 月 12 日联合发布教科信〔2026〕1 号文，从国家层面系统性部署 AI 教育，是迄今为止覆盖范围最广、力度最大的 AI 教育政策文件，对整个赛道形成明确利好。</div>
-    <a class="card-link" href="http://www.moe.gov.cn/fbh/live/2026/77927/wj/" target="_blank">🔗 教育部官网 · 2026-04-12</a>
-  </div>
+  // IntersectionObserver → 滚动时高亮当前章节
+  var tocLinks = sidebar.querySelectorAll('.toc-item');
+  var headingEls = [];
+  document.querySelectorAll('h1[id],h2[id],h3[id],h4[id]').forEach(function(el){
+    headingEls.push(el);
+  });
 
-  <div class="card">
-    <div class="card-tag">🌏 AI 格局</div>
-    <div class="card-title">斯坦福报告：中美 AI 模型性能差距明显缩小</div>
-    <div class="card-text">2026 年 4 月 14 日发布的斯坦福 AI 发展十大趋势报告显示，中国多项 AI 指标已居全球前列，大模型能力持续提升，为国内 AI 教育产品的底层能力提供更强支撑。</div>
-    <a class="card-link" href="https://www.news.cn/world/20260414/0422b835aa25467fa4505aa68876eb4a/c.html" target="_blank">🔗 新华网 · 2026-04-14</a>
-  </div>
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        tocLinks.forEach(function(a){
+          a.classList.toggle('active', a.getAttribute('data-id')===entry.target.id);
+        });
+      }
+    });
+  }, {rootMargin:'-20% 0px -70% 0px'});
 
-  <!-- 竞品动态 -->
-  <div class="card">
-    <div class="card-tag orange">🔍 竞品动态</div>
-    <div class="card-title">星链英语：AI + 真人教练协同分工模式</div>
-    <div class="card-text">2026 年 4 月 10 日报道，星链英语采用 AI 承担个性化内容共创、真人教练专注引导复习的分工模式——与 LinguaFlow"AI 叙事生成 + 用户自主复习"的分工逻辑高度一致，证明该方向已被竞品验证。</div>
-    <a class="card-link" href="https://digi.china.com/articles/20260410/202604101843441.html" target="_blank">🔗 中华网 · 2026-04-10</a>
-  </div>
+  headingEls.forEach(function(el){ observer.observe(el); });
 
-  <div class="card">
-    <div class="card-tag orange">🔍 竞品动态</div>
-    <div class="card-title">背单词新趋势：词文串学 + AI 匹配外刊</div>
-    <div class="card-text">2026 年 4 月 10 日测评显示，场景化、语境化的词文串学已成新标杆，AI 根据学习词汇匹配外刊同源短文渐成标配——与 LinguaFlow"AI 叙事场景"方向不谋而合。</div>
-    <a class="card-link" href="https://news.qq.com/rain/a/20260410A043OV00" target="_blank">🔗 腾讯新闻 · 2026-04-10</a>
-  </div>
-
-  <div class="card">
-    <div class="card-tag orange">🔍 竞品动态</div>
-    <div class="card-title">字节/阿里全面入局：豆包 + 千问开年动作</div>
-    <div class="card-text">字节将"豆包爱学"推至核心入口；阿里千问新增"一键搜试卷"功能；巨头全面进入 AI 教育赛道，竞争加剧的同时也加速了用户教育。</div>
-    <a class="card-link" href="https://www.jiemian.com/article/13997599.html" target="_blank">🔗 界面新闻 · 2026-01</a>
-  </div>
-
-  <div class="card">
-    <div class="card-tag orange">🔍 竞品动态</div>
-    <div class="card-title">2026 教育科技十大趋势：个性化实时调节 + 情感化 AI 引导</div>
-    <div class="card-text">个性化学习路径动态调节、AI 情感化交互已成行业共识方向；LinguaFlow 的情感叙事引擎恰好契合这一趋势，具备先发优势。</div>
-    <a class="card-link" href="https://www.woshipm.com/it/6328080.html" target="_blank">🔗 人人都是产品经理 · 2026-04</a>
-  </div>
-
-  <div class="card">
-    <div class="card-tag orange">🔍 竞品动态</div>
-    <div class="card-title">可栗口语：外贸场景 AI 口语，覆盖 18 大行业</div>
-    <div class="card-text">垂直场景 AI 口语学习已成新赛道入口，外贸场景的词库和语境设计为 LinguaFlow 行业词库拓展提供了参考方向。</div>
-    <a class="card-link" href="https://cloud.tencent.com/developer/news/3795978" target="_blank">🔗 腾讯云 · 2026-04</a>
-  </div>
-
-  <!-- 一句话结论 -->
-  <div class="conclusion">
-    <div class="label">💡 一句话结论</div>
-    <p>政策窗口打开 + 竞品验证模式 + 巨头加速布局，三重利好叠加，<strong>LinguaFlow 应尽快上线 MVP 抢占"AI 叙事场景背单词"这一差异化赛道，窗口期预计不超过 2 个季度。</strong></p>
-  </div>
-
-</main>
-
-<div class="footer">
-  本报告由产品经理 Agent 自动生成 · 2026-04-15 09:15 UTC · LinguaFlow 竞品监测
-</div>
-
+  // 滚动 > 120px 时显示，否则隐藏
+  window.addEventListener('scroll',function(){
+    sidebar.style.opacity = window.scrollY<120?'0':'1';
+  },{passive:true});
+  sidebar.style.opacity='0';
+})();
+</script>
 </body>
 </html>

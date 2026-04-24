@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>团队每日速递-2026-04-20 — LinguaFlow 文档中心</title>
+  <style>
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;font-size:16px;line-height:1.8;color:#1a1a2e;background:#f8f9fc;padding:24px 220px 80px 24px;max-width:100%}
+.toc-sidebar{position:fixed;right:16px;top:80px;width:190px;background:white;border:1px solid #e2e8f0;border-radius:12px;padding:14px;max-height:calc(100vh-100px);overflow-y:auto;z-index:100;box-shadow:0 4px 16px rgba(0,0,0,0.08);font-size:12px;transition:opacity 0.3s}
+.toc-sidebar-title{font-weight:700;font-size:12px;color:#1a1a2e;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #e2e8f0}
+.toc-item{display:block;padding:5px 6px;border-radius:6px;color:#64748b;font-size:12px;line-height:1.4;cursor:pointer;text-decoration:none;transition:all 0.15s}
+.toc-item:hover{color:#4F46E5;background:#f5f3ff}
+.toc-item.active{color:#4F46E5;font-weight:700;background:#f5f3ff;border-left:2px solid #4F46E5;padding-left:4px}
+.toc-h3{padding-left:14px;font-size:11px}
+.toc-h4{padding-left:26px;font-size:11px;color:#94a3b8}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:#4F46E5;color:white;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:600;margin-bottom:20px;text-decoration:none}
+.back-btn:hover{background:#3730A3;text-decoration:none}
+.document-meta{font-size:13px;color:#888;margin-bottom:20px;padding:8px 14px;background:#f8f9fc;border-radius:8px;border:1px solid #e2e8f0}
+a{color:#4F46E5;text-decoration:none}a:hover{text-decoration:underline}
+h1{font-size:1.8em;font-weight:800;color:#0f0f1a;border-bottom:3px solid #4F46E5;padding-bottom:10px;margin:28px 0 16px;line-height:1.3}
+h2{font-size:1.35em;font-weight:700;color:#1a1a2e;margin:24px 0 10px;border-left:4px solid #4F46E5;padding-left:10px}
+h3{font-size:1.1em;font-weight:700;color:#333;margin:20px 0 8px}
+h4{font-size:1em;font-weight:700;color:#555;margin:16px 0 6px}
+p{margin:12px 0;color:#333}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px;overflow-x:auto;display:block}
+th{background:#4F46E5;color:white;padding:10px 14px;text-align:left;font-weight:600;position:sticky;top:0;z-index:1}
+td{padding:9px 14px;border:1px solid #e2e8f0}
+tr:nth-child(even) td{background:#f1f5f9}tr:nth-child(odd) td{background:#fff}
+ul,ol{padding-left:24px;margin:10px 0}li{margin:5px 0;color:#333}
+blockquote{border-left:4px solid #4F46E5;margin:14px 0;padding:10px 16px;background:#f0f0ff;border-radius:0 8px 8px 0;color:#555;font-style:italic}
+code{background:#f1f5f9;border:1px solid #e2e8f0;border-radius:4px;padding:2px 6px;font-size:0.88em;font-family:'Fira Code','Consolas',monospace;color:#7C3AED}
+pre{background:#1e1e2e;border-radius:10px;padding:16px 20px;overflow-x:auto;margin:14px 0}
+pre code{background:none;border:none;color:#a6e3a1;font-size:0.9em;padding:0}
+hr{border:none;border-top:2px solid #e2e8f0;margin:24px 0}img{max-width:100%;height:auto;border-radius:8px;margin:8px 0}
+@media(max-width:900px){.toc-sidebar{display:none}body{padding:24px 16px 80px}}
+</style>
+</head>
+<body>
+  <a class="back-btn" href="javascript:void(0)" onclick="history.back()">&#8592; 文档管理中心</a>
+  <div class="document-meta">&#128193; 文档</div>
+  <h1 id="团队每日速递">团队每日速递</h1>
+<p><strong>第12期</strong> · 2026-04-20 · Sprint 1 Day 1</p>
+<hr>
+<h2 id="今日完成事项-完成项-负责人-交付文档-竞品早报第8期-小红-commit-952199f-sprint-1-看板创建-小红-commit-71c7aa2-go-项目初始化19个文件-后端-agent-commit-28dfd70-sprint-1-看板进度更新18-项目经理-agent-commit-20cc0c6-sprint-1-进度-当前12518-完成-任务-状态-备注-go-项目初始化-完成-19个文件cmdinternalpkg-分层完整-prd-v10-终版-待启动-sprint-0-遗留依赖链顶端需人工兜底-api-接口文档-v10-待启动-后端-agent依赖-go-框架-用户注册登录模块-待启动-前后端配合token-鉴权-单词添加功能-待启动-前端-agent-ai-场景生成集成-待启动-deepseekv3-api-复习闭环设计-待启动-pm-agent-react-web-脚手架-待启动-依赖-api-文档-阻塞项-风险-风险-等级-说明-prd-v10-终版悬而未决-高-sprint-0-遗留api文档和功能设计均依赖-后端任务集中积压-中高-go初始化-api文档-登录-ai集成-github-secrets-未配置-中-deepseek_api_key-等缺失cicd-不完整-glm-抢购今日未提醒-中-0950-提醒未触发1000-窗口错过-经验教训-竞品早报-0900-定时任务可提前触发心跳间隔约-2-小时建议在-0800-心跳窗口提前执行第阶段搜索08xx-执行第阶段在-08xx-继续避免-0900-实际窗口已过时再补发-明日待推进">今日完成事项</h2>
+<table>
+<thead>
+<tr>
+<th>完成项</th>
+<th>负责人</th>
+<th>交付文档</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>竞品早报第8期</td>
+<td>小红</td>
+<td>commit 952199f</td>
+</tr>
+<tr>
+<td>Sprint 1 看板创建</td>
+<td>小红</td>
+<td>commit 71c7aa2</td>
+</tr>
+<tr>
+<td>Go 项目初始化（19个文件）</td>
+<td>后端 Agent</td>
+<td>commit 28dfd70</td>
+</tr>
+<tr>
+<td>Sprint 1 看板进度更新（1/8）</td>
+<td>项目经理 Agent</td>
+<td>commit 20cc0c6</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Sprint 1 进度</h2>
+<p><strong>当前：12.5%（1/8 完成）</strong></p>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>状态</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Go 项目初始化</td>
+<td>✅ 完成</td>
+<td>19个文件，cmd/internal/pkg 分层完整</td>
+</tr>
+<tr>
+<td>PRD v1.0 终版</td>
+<td>⏳ 待启动</td>
+<td>Sprint 0 遗留，依赖链顶端，需人工兜底</td>
+</tr>
+<tr>
+<td>API 接口文档 v1.0</td>
+<td>⏳ 待启动</td>
+<td>后端 Agent，依赖 Go 框架</td>
+</tr>
+<tr>
+<td>用户注册/登录模块</td>
+<td>⏳ 待启动</td>
+<td>前后端配合，Token 鉴权</td>
+</tr>
+<tr>
+<td>单词添加功能</td>
+<td>⏳ 待启动</td>
+<td>前端 Agent</td>
+</tr>
+<tr>
+<td>AI 场景生成集成</td>
+<td>⏳ 待启动</td>
+<td>DeepSeek-V3 API</td>
+</tr>
+<tr>
+<td>复习闭环设计</td>
+<td>⏳ 待启动</td>
+<td>PM Agent</td>
+</tr>
+<tr>
+<td>React Web 脚手架</td>
+<td>⏳ 待启动</td>
+<td>依赖 API 文档</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>阻塞项 / 风险</h2>
+<table>
+<thead>
+<tr>
+<th>风险</th>
+<th>等级</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PRD v1.0 终版悬而未决</td>
+<td>🔴 高</td>
+<td>Sprint 0 遗留，API文档和功能设计均依赖</td>
+</tr>
+<tr>
+<td>后端任务集中积压</td>
+<td>🟠 中高</td>
+<td>Go初始化(✅) + API文档 + 登录 + AI集成</td>
+</tr>
+<tr>
+<td>GitHub Secrets 未配置</td>
+<td>🟡 中</td>
+<td>DEEPSEEK_API_KEY 等缺失，CI/CD 不完整</td>
+</tr>
+<tr>
+<td>GLM 抢购今日未提醒</td>
+<td>🟡 中</td>
+<td>09:50 提醒未触发，10:00 窗口错过</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>经验教训</h2>
+<p><strong>竞品早报 09:00 定时任务可提前触发</strong>：心跳间隔约 2 小时，建议在 08:00 心跳窗口提前执行第①阶段搜索（08:xx 执行），第②阶段在 08:xx 继续，避免 09:00 实际窗口已过时再补发。</p>
+<hr>
+<h2>明日待推进</h2>
+<ol>
+<li>后端 Agent：API 接口文档草稿（可基于 Go 项目骨架先行）</li>
+<li>PM Agent：PRD v1.0 终版（需人工介入或 Agent 重新启动）</li>
+<li>前端 Agent：React Web 脚手架准备</li>
+<li>统筹人：GitHub Secrets 配置（DEEPSEEK_API_KEY 等）</li>
+</ol>
+<hr>
+<p><em>第12期 · 2026-04-20 18:00 UTC · Sprint 1 Day 1 · LinguaFlow 团队</em></p>
+
+  <div class="toc-sidebar" id="toc-sidebar">
+  <div class="toc-sidebar-title">&#128203; 目录</div>
+        <a class="toc-item" data-id="团队每日速递">团队每日速递</a>
+        <a class="toc-item" data-id="今日完成事项">今日完成事项</a>
+        <a class="toc-item" data-id="sprint-1-进度">Sprint 1 进度</a>
+        <a class="toc-item" data-id="阻塞项-风险">阻塞项 / 风险</a>
+        <a class="toc-item" data-id="经验教训">经验教训</a>
+        <a class="toc-item" data-id="明日待推进">明日待推进</a>
+      </div>
+  <script>
+(function(){
+  var sidebar = document.getElementById('toc-sidebar');
+  if(!sidebar) return;
+
+  // 点击目录项 → 平滑滚动到对应章节
+  sidebar.addEventListener('click',function(e){
+    var link = e.target.closest('.toc-item');
+    if(!link) return;
+    var id = link.getAttribute('data-id');
+    var el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
+  // IntersectionObserver → 滚动时高亮当前章节
+  var tocLinks = sidebar.querySelectorAll('.toc-item');
+  var headingEls = [];
+  document.querySelectorAll('h1[id],h2[id],h3[id],h4[id]').forEach(function(el){
+    headingEls.push(el);
+  });
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        tocLinks.forEach(function(a){
+          a.classList.toggle('active', a.getAttribute('data-id')===entry.target.id);
+        });
+      }
+    });
+  }, {rootMargin:'-20% 0px -70% 0px'});
+
+  headingEls.forEach(function(el){ observer.observe(el); });
+
+  // 滚动 > 120px 时显示，否则隐藏
+  window.addEventListener('scroll',function(){
+    sidebar.style.opacity = window.scrollY<120?'0':'1';
+  },{passive:true});
+  sidebar.style.opacity='0';
+})();
+</script>
+</body>
+</html>

@@ -1,326 +1,132 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LinguaFlow 竞品早报 · 2026年4月8日</title>
+  <title>竞品早报/竞品早报-2026-04-08 — LinguaFlow 文档中心</title>
   <style>
-    :root {
-      --bg: #f9f7f4;
-      --card-bg: #ffffff;
-      --accent: #5b5ef4;
-      --accent-light: #eeeefd;
-      --text-primary: #1a1a2e;
-      --text-secondary: #555577;
-      --border: #e8e8f0;
-      --tag-bg: #f0f0fe;
-      --tag-text: #5b5ef4;
-      --signal-bg: #fff9e6;
-      --signal-border: #f0c040;
-      --conclusion-bg: #f0fdf4;
-      --conclusion-border: #22c55e;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
-      background-color: var(--bg);
-      color: var(--text-primary);
-      line-height: 1.7;
-      padding: 32px 16px 80px;
-    }
-
-    .container {
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    /* Header */
-    .header {
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
-    .header .logo {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-
-    .header h1 {
-      font-size: 26px;
-      font-weight: 800;
-      color: var(--text-primary);
-      line-height: 1.3;
-    }
-
-    .header .date-line {
-      margin-top: 10px;
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-
-    .header .date-line span {
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      padding: 3px 12px;
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 13px;
-    }
-
-    /* Section */
-    .section {
-      background: var(--card-bg);
-      border-radius: 16px;
-      padding: 24px 28px;
-      margin-bottom: 16px;
-      border: 1px solid var(--border);
-      box-shadow: 0 2px 8px rgba(91, 94, 244, 0.05);
-    }
-
-    .section-icon {
-      font-size: 20px;
-      margin-right: 8px;
-    }
-
-    .section-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      border-bottom: 2px solid var(--accent-light);
-      padding-bottom: 10px;
-    }
-
-    /* Item */
-    .item {
-      margin-bottom: 18px;
-      padding: 16px;
-      background: var(--bg);
-      border-radius: 12px;
-      border-left: 4px solid var(--accent);
-    }
-
-    .item:last-child {
-      margin-bottom: 0;
-    }
-
-    .item-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-      line-height: 1.5;
-    }
-
-    .item-summary {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-bottom: 8px;
-    }
-
-    .item-metric {
-      display: inline-block;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      font-size: 12px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 20px;
-      font-weight: 700;
-    }
-
-    /* Signal section */
-    .signal-section {
-      background: var(--signal-bg);
-      border: 1px solid var(--signal-border);
-    }
-
-    .signal-section .section-title {
-      border-bottom-color: #fde68a;
-    }
-
-    .signal-item {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 12px;
-      align-items: flex-start;
-    }
-
-    .signal-bullet {
-      width: 22px;
-      height: 22px;
-      background: var(--signal-border);
-      color: #fff;
-      border-radius: 50%;
-      font-size: 11px;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .signal-text {
-      font-size: 14px;
-      color: #92400e;
-      line-height: 1.6;
-    }
-
-    .signal-item:last-child { margin-bottom: 0; }
-
-    /* Conclusion */
-    .conclusion {
-      background: var(--conclusion-bg);
-      border: 1px solid var(--conclusion-border);
-      border-radius: 16px;
-      padding: 24px 28px;
-    }
-
-    .conclusion-label {
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: #16a34a;
-      margin-bottom: 10px;
-    }
-
-    .conclusion-text {
-      font-size: 15px;
-      color: #14532d;
-      font-weight: 600;
-      line-height: 1.7;
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      margin-top: 24px;
-      font-size: 12px;
-      color: #aaa;
-    }
-
-    @media (max-width: 480px) {
-      .section { padding: 18px 16px; }
-      .header h1 { font-size: 22px; }
-    }
-  </style>
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;font-size:16px;line-height:1.8;color:#1a1a2e;background:#f8f9fc;padding:24px 220px 80px 24px;max-width:100%}
+.toc-sidebar{position:fixed;right:16px;top:80px;width:190px;background:white;border:1px solid #e2e8f0;border-radius:12px;padding:14px;max-height:calc(100vh-100px);overflow-y:auto;z-index:100;box-shadow:0 4px 16px rgba(0,0,0,0.08);font-size:12px;transition:opacity 0.3s}
+.toc-sidebar-title{font-weight:700;font-size:12px;color:#1a1a2e;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #e2e8f0}
+.toc-item{display:block;padding:5px 6px;border-radius:6px;color:#64748b;font-size:12px;line-height:1.4;cursor:pointer;text-decoration:none;transition:all 0.15s}
+.toc-item:hover{color:#4F46E5;background:#f5f3ff}
+.toc-item.active{color:#4F46E5;font-weight:700;background:#f5f3ff;border-left:2px solid #4F46E5;padding-left:4px}
+.toc-h3{padding-left:14px;font-size:11px}
+.toc-h4{padding-left:26px;font-size:11px;color:#94a3b8}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:#4F46E5;color:white;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:600;margin-bottom:20px;text-decoration:none}
+.back-btn:hover{background:#3730A3;text-decoration:none}
+.document-meta{font-size:13px;color:#888;margin-bottom:20px;padding:8px 14px;background:#f8f9fc;border-radius:8px;border:1px solid #e2e8f0}
+a{color:#4F46E5;text-decoration:none}a:hover{text-decoration:underline}
+h1{font-size:1.8em;font-weight:800;color:#0f0f1a;border-bottom:3px solid #4F46E5;padding-bottom:10px;margin:28px 0 16px;line-height:1.3}
+h2{font-size:1.35em;font-weight:700;color:#1a1a2e;margin:24px 0 10px;border-left:4px solid #4F46E5;padding-left:10px}
+h3{font-size:1.1em;font-weight:700;color:#333;margin:20px 0 8px}
+h4{font-size:1em;font-weight:700;color:#555;margin:16px 0 6px}
+p{margin:12px 0;color:#333}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px;overflow-x:auto;display:block}
+th{background:#4F46E5;color:white;padding:10px 14px;text-align:left;font-weight:600;position:sticky;top:0;z-index:1}
+td{padding:9px 14px;border:1px solid #e2e8f0}
+tr:nth-child(even) td{background:#f1f5f9}tr:nth-child(odd) td{background:#fff}
+ul,ol{padding-left:24px;margin:10px 0}li{margin:5px 0;color:#333}
+blockquote{border-left:4px solid #4F46E5;margin:14px 0;padding:10px 16px;background:#f0f0ff;border-radius:0 8px 8px 0;color:#555;font-style:italic}
+code{background:#f1f5f9;border:1px solid #e2e8f0;border-radius:4px;padding:2px 6px;font-size:0.88em;font-family:'Fira Code','Consolas',monospace;color:#7C3AED}
+pre{background:#1e1e2e;border-radius:10px;padding:16px 20px;overflow-x:auto;margin:14px 0}
+pre code{background:none;border:none;color:#a6e3a1;font-size:0.9em;padding:0}
+hr{border:none;border-top:2px solid #e2e8f0;margin:24px 0}img{max-width:100%;height:auto;border-radius:8px;margin:8px 0}
+@media(max-width:900px){.toc-sidebar{display:none}body{padding:24px 16px 80px}}
+</style>
 </head>
 <body>
-  <div class="container">
+  <a class="back-btn" href="javascript:void(0)" onclick="history.back()">&#8592; 文档管理中心</a>
+  <div class="document-meta">&#128193; 竞品早报</div>
+  <h1 id="linguaflow-竞品早报-2026年4月8日">LinguaFlow 竞品早报 · 2026年4月8日</h1>
+<hr>
+<h2 id="行业动态-可栗口语主打quot纠错效率9995quotai口语进入精准纠错时代-采用中高考口语考试官方同款评分系统音素级毫秒级分析精准定位中式发音短板实时生成纠错建议与舌位动态图示核心纠错功能免费开放-关键数据纠错效率9995-来源中华网-httpsmtechchinacomredian20260408042026_1841876html-20260408-星空外语强势入场80万正版资源190万教师背书-主打零基础到高级全覆盖集趣味性与专业性于一体接入ai大模型技术差异化聚焦quot资源教师quot背书路线-关键数据80万正版资源190万教师推荐998满意度-来源中华网-httpsheachinacomheaxinwen20260407042026_1840390html-20260406-产品更新-咕噜口语多平台霸榜ai口语赛道头部效应加剧-综合评分登顶多平台推荐榜单ai系统真人对话还原度达927累计用户超2000万五星好评率992口碑文章密集发布期-关键数据2000万用户992好评率927对话还原度-来源腾讯新闻-httpsnewsqqcomraina20260401a05lk700-20260401-可栗口语登顶2026年爆款榜单主打quot纠错教材同步quot双壁垒-app-store综合评分49分以quot教材同步ai精准纠音quot双轮驱动在口语学习赛道与咕噜口语形成差异化竞争-关键数据49分app-store-来源网易-httpswww163comdyarticlekpgnbs0v0550te65html-20260402-全流程ai免费化趋势加速中尾部产品空间进一步压缩-主流app背单词练对话刷真题单元测全流程ai功能逐步免费化ai翻译辅助降低门槛纯粹功能堆叠产品加速淘汰-来源稀土掘金-httpsjuejincnpost7625301482213261363-20260406-竞争态势-ai英语口语学习赛道进入精准度竞争期头部产品咕噜口语可栗口语依靠音素级纠错和全场景覆盖形成壁垒星空外语以quot资源教师quot差异化入场多邻国凭借178亿全球用户维持零基础启蒙优势技术壁垒正从quot功能丰富quot转向quotai纠错精准度quot和quot场景闭环深度quot-值得关注的信号">📰 行业动态</h2>
+<p><strong>可栗口语主打&quot;纠错效率99.95%&quot;，AI口语进入精准纠错时代</strong>
+采用中高考口语考试官方同款评分系统，音素级毫秒级分析精准定位中式发音短板，实时生成纠错建议与舌位动态图示，核心纠错功能免费开放。
+<em>关键数据：纠错效率99.95%</em>
+<em>来源：中华网 | <a href="https://m.tech.china.com/redian/2026/0408/042026_1841876.html">https://m.tech.china.com/redian/2026/0408/042026_1841876.html</a> | 2026-04-08</em></p>
+<hr>
+<p><strong>星空外语强势入场，80万正版资源+190万教师背书</strong>
+主打零基础到高级全覆盖，集趣味性与专业性于一体，接入AI大模型技术，差异化聚焦&quot;资源+教师&quot;背书路线。
+<em>关键数据：80万正版资源，190万教师推荐，99.8%满意度</em>
+<em>来源：中华网 | <a href="https://hea.china.com/hea/xinwen/2026/0407/042026_1840390.html">https://hea.china.com/hea/xinwen/2026/0407/042026_1840390.html</a> | 2026-04-06</em></p>
+<hr>
+<h2>🆕 产品更新</h2>
+<p><strong>咕噜口语多平台霸榜，AI口语赛道头部效应加剧</strong>
+综合评分登顶多平台推荐榜单，AI系统真人对话还原度达92.7%，累计用户超2000万，五星好评率99.2%，口碑文章密集发布期。
+<em>关键数据：2000万+用户，99.2%好评率，92.7%对话还原度</em>
+<em>来源：腾讯新闻 | <a href="https://news.qq.com/rain/a/20260401A05LK700">https://news.qq.com/rain/a/20260401A05LK700</a> | 2026-04-01</em></p>
+<p><strong>可栗口语登顶2026年爆款榜单，主打&quot;纠错+教材同步&quot;双壁垒</strong>
+App Store综合评分4.9分，以&quot;教材同步+AI精准纠音&quot;双轮驱动，在口语学习赛道与咕噜口语形成差异化竞争。
+<em>关键数据：4.9分（App Store）</em>
+<em>来源：网易 | <a href="https://www.163.com/dy/article/KPGNBS0V0550TE65.html">https://www.163.com/dy/article/KPGNBS0V0550TE65.html</a> | 2026-04-02</em></p>
+<p><strong>全流程AI免费化趋势加速，中尾部产品空间进一步压缩</strong>
+主流APP「背单词-练对话-刷真题-单元测」全流程AI功能逐步免费化，AI翻译辅助降低门槛，纯粹功能堆叠产品加速淘汰。
+<em>来源：稀土掘金 | <a href="https://juejin.cn/post/7625301482213261363">https://juejin.cn/post/7625301482213261363</a> | 2026-04-06</em></p>
+<hr>
+<h2>🔍 竞争态势</h2>
+<p>AI英语口语学习赛道进入<strong>精准度竞争期</strong>：头部产品（咕噜口语、可栗口语）依靠音素级纠错和全场景覆盖形成壁垒；星空外语以&quot;资源+教师&quot;差异化入场；多邻国凭借1.78亿全球用户维持零基础启蒙优势。<strong>技术壁垒正从&quot;功能丰富&quot;转向&quot;AI纠错精准度&quot;和&quot;场景闭环深度&quot;。</strong></p>
+<hr>
+<h2>💡 值得关注的信号</h2>
+<ul>
+<li><strong>AI Agent 情绪识别落地教育</strong>：即构科技AI Agent支持情绪识别+多情感TTS，智能助教方向加速成熟</li>
+<li><strong>纠错免费化</strong>：头部产品将纠错功能免费开放，形成降维打击，中尾部产品盈利空间受压缩</li>
+<li><strong>资源+AI整合成新壁垒</strong>：星空外语&quot;80万资源+AI&quot;的模式，说明内容护城河仍然是防御性壁垒</li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>📌 一句话结论：</strong> AI口语学习赛道技术壁垒已从&quot;功能数量&quot;升级为&quot;精准度+场景闭环深度&quot;，LinguaFlow 应重点打磨<strong>音素级纠错</strong>和<strong>场景化学习路径</strong>，在头部内容密集轰炸期前完成核心差异化打透，避免陷入功能堆叠竞争。</p>
+</blockquote>
+<p><em>本报告仅收录2026年发布内容，所有来源均已注明URL与发布日期。</em></p>
 
-    <!-- Header -->
-    <div class="header">
-      <div class="logo">LinguaFlow · Intelligence Report</div>
-      <h1>竞品早报 · 2026年4月8日</h1>
-      <div class="date-line">
-        <span>2026-04-08 · 行业扫描</span>
+  <div class="toc-sidebar" id="toc-sidebar">
+  <div class="toc-sidebar-title">&#128203; 目录</div>
+        <a class="toc-item" data-id="linguaflow-竞品早报-2026年4月8日">LinguaFlow 竞品早报 · 2026年4月8日</a>
+        <a class="toc-item" data-id="行业动态">📰 行业动态</a>
+        <a class="toc-item" data-id="产品更新">🆕 产品更新</a>
+        <a class="toc-item" data-id="竞争态势">🔍 竞争态势</a>
+        <a class="toc-item" data-id="值得关注的信号">💡 值得关注的信号</a>
       </div>
-    </div>
+  <script>
+(function(){
+  var sidebar = document.getElementById('toc-sidebar');
+  if(!sidebar) return;
 
-    <!-- 行业动态 -->
-    <div class="section">
-      <div class="section-title">
-        <span class="section-icon">📰</span>行业动态
-      </div>
+  // 点击目录项 → 平滑滚动到对应章节
+  sidebar.addEventListener('click',function(e){
+    var link = e.target.closest('.toc-item');
+    if(!link) return;
+    var id = link.getAttribute('data-id');
+    var el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  });
 
-      <div class="item">
-        <div class="item-title">贾跃亭入局EAI教育机器人，家庭场景为首要落地目标</div>
-        <div class="item-summary">贾跃亭旗下公司宣布进军EAI（Education AI）机器人赛道，明确家庭教育为第一阶段核心落地场景，计划建立全美首个规模化EAI教育体系，剑指语言学习与课后辅导市场。</div>
-        <span class="item-metric">全美首个规模化EAI教育体系</span>
-      </div>
+  // IntersectionObserver → 滚动时高亮当前章节
+  var tocLinks = sidebar.querySelectorAll('.toc-item');
+  var headingEls = [];
+  document.querySelectorAll('h1[id],h2[id],h3[id],h4[id]').forEach(function(el){
+    headingEls.push(el);
+  });
 
-      <div class="item">
-        <div class="item-title">北京东城区"AI校长"正式上岗，斑马教育AI落地提速</div>
-        <div class="item-summary">东城区新增一所"双轨制"高中，斑马（Zebra）团队参与建设，肖盾担任AI校长，将AI能力深度融入学校治理与教学场景，标志着AI校长从概念走向规模化落地的里程碑事件。</div>
-        <span class="item-metric">AI校长首次规模化落地</span>
-      </div>
-    </div>
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        tocLinks.forEach(function(a){
+          a.classList.toggle('active', a.getAttribute('data-id')===entry.target.id);
+        });
+      }
+    });
+  }, {rootMargin:'-20% 0px -70% 0px'});
 
-    <!-- 产品更新 -->
-    <div class="section">
-      <div class="section-title">
-        <span class="section-icon">🆕</span>产品更新
-      </div>
+  headingEls.forEach(function(el){ observer.observe(el); });
 
-      <div class="item">
-        <div class="item-title">多邻国（Duolingo）v6.72.4发布，新增粤语课程</div>
-        <div class="item-summary">多邻国发布最新版本，首次上线粤语学习课程，进一步扩展语言覆盖面。截至2026年3月，全球用户达1.78亿，持续保持最大学习者社区优势。</div>
-        <span class="item-metric">全球1.78亿用户</span>
-        <span class="item-metric" style="margin-left:6px">粤语课程首发</span>
-      </div>
-
-      <div class="item">
-        <div class="item-title">咕噜口语多平台霸榜，AI口语头部效应加剧</div>
-        <div class="item-summary">咕噜口语（SpeakGuru）凭借"全球首创音素级发音评估技术"，AI系统真人对话还原度达92.7%，累计用户超2000万，五星好评率99.2%，综合评分登顶多平台推荐榜单。</div>
-        <span class="item-metric">2000万用户</span>
-        <span class="item-metric" style="margin-left:6px">99.2%好评率</span>
-        <span class="item-metric" style="margin-left:6px">92.7%对话还原度</span>
-      </div>
-
-      <div class="item">
-        <div class="item-title">可栗口语800万口碑验证，主打音素级精准纠错</div>
-        <div class="item-summary">可栗口语以"全场景自适应学习系统"定位，覆盖零基础到高级完整路径，主打74.8%音素级精准纠错，另据称注册用户达2.2亿+，成为增速最快的垂直AI口语平台之一。</div>
-        <span class="item-metric">800万口碑用户</span>
-        <span class="item-metric" style="margin-left:6px">74.8%纠错准确率</span>
-      </div>
-    </div>
-
-    <!-- 竞争态势 -->
-    <div class="section">
-      <div class="section-title">
-        <span class="section-icon">🔍</span>竞争态势
-      </div>
-
-      <div class="item" style="border-left-color:#22c55e">
-        <div class="item-title">技术壁垒升级：精准度+场景闭环成为核心竞争维度</div>
-        <div class="item-summary">AI英语口语学习赛道进入技术分化期。头部产品依靠音素级纠错和全场景AI陪练形成壁垒；多邻国凭借1.78亿全球用户维持零基础启蒙优势；句乐部英语从语法闯关切入形成玩法差异化。技术壁垒正从"功能丰富"转向"AI精准度"和"场景闭环深度"，纯功能堆叠型产品正被快速淘汰。</div>
-        <span class="item-metric">头部效应加剧</span>
-        <span class="item-metric" style="margin-left:6px">技术分化期</span>
-      </div>
-    </div>
-
-    <!-- 值得关注的信号 -->
-    <div class="section signal-section">
-      <div class="section-title">
-        <span class="section-icon">💡</span>值得关注的信号
-      </div>
-
-      <div class="signal-item">
-        <div class="signal-bullet">1</div>
-        <div class="signal-text">低代码AI落地加速：斑马内部挑战赛15个获奖项目均由非技术人员主导，一线教师和运营人员正成为教育AI落地的重要推动力。</div>
-      </div>
-      <div class="signal-item">
-        <div class="signal-bullet">2</div>
-        <div class="signal-text">口语赛道头部内容密集轰炸期开启：咕噜口语、可栗口语近一周密集发布口碑内容，正在加速抢占用户心智窗口。</div>
-      </div>
-      <div class="signal-item">
-        <div class="signal-bullet">3</div>
-        <div class="signal-text">全流程AI功能逐步免费化：主流APP「背单词-练对话-刷真题-单元测」全流程免费化加速，中尾部产品盈利空间进一步被压缩。</div>
-      </div>
-    </div>
-
-    <!-- 一句话结论 -->
-    <div class="conclusion">
-      <div class="conclusion-label">📌 一句话结论</div>
-      <div class="conclusion-text">
-        AI口语学习赛道技术壁垒已从"功能数量"升级为"精准度+场景闭环深度"，LinguaFlow 应重点打磨音素级纠错和场景化学习路径，在头部内容密集轰炸期前完成核心差异化打透，避免陷入功能堆叠竞争。
-      </div>
-    </div>
-
-    <div class="footer">
-      LinguaFlow 竞品早报 · 生成时间：2026-04-08 · 数据来源：多知网、芥末堆、行业媒体
-    </div>
-
-  </div>
+  // 滚动 > 120px 时显示，否则隐藏
+  window.addEventListener('scroll',function(){
+    sidebar.style.opacity = window.scrollY<120?'0':'1';
+  },{passive:true});
+  sidebar.style.opacity='0';
+})();
+</script>
 </body>
 </html>
